@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 80px 1fr;
+  grid-template-columns: 300px 1fr;
+  height: 100vh;
+}
+
+header {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  padding: 0px 30px;
+  background-color: #020617;
+  color: white;
+}
+
+.sidebar {
+  grid-row: 2 / 3;
+  background-color: #334155;
+}
+
+button.add {
+  padding: 15px 20px;
+  background-color: #e2e8f0;
+  border-radius: 15px;
+  align-self: center;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 10px;
+}
+
+.library {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: 200px;
+  gap: 30px;
+  padding: 30px;
+}
+
+.new-book {
+  background-color: #334155;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  color: white;
+  border-radius: 20px;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 30px;
+  color: white;
+}
+
+form h2 {
+  padding: 30px;
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
