@@ -9,11 +9,15 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+Book.prototype.changeStatus = function() {
+  this.read = !this.read;
+}
 
 // Создание функции которая сохраняет новый объект книги в массив
 
 function addBookToLibrary(title, author, pages, read) {
-  myLibrary.push(new Book(title, author, pages, read));
+  const book = new Book(title, author, pages, read)
+  myLibrary.push(book);
 }
 
 
@@ -59,14 +63,25 @@ function displayAllBooks() {
     removeBtn.addEventListener('click', () => {
       myLibrary.splice(content.dataset.index, 1);
       displayAllBooks();
-      });
+    });
     // console.log('Add remove button');
     
+    const changeBtn = document.createElement('button');
+    changeBtn.classList.toggle('change-status-button');
+    changeBtn.textContent = 'Change status';
+
+    changeBtn.addEventListener('click', () => {
+      book.changeStatus();
+      displayAllBooks();
+    });
+    
+
     content.appendChild(bookTitle);
     content.appendChild(bookAuthor);
     content.appendChild(bookPages);
     content.appendChild(bookRead);
     content.appendChild(removeBtn);
+    content.appendChild(changeBtn);
   }
 }
 
@@ -95,5 +110,5 @@ btnForm.addEventListener('click', () => {
   readInput.checked ? readStatus = true : readStatus = false;
   addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readStatus);
   displayAllBooks();
-  // formBook.reset();
+  formBook.reset();
 });
