@@ -25,7 +25,7 @@ header {
   background-color: #334155;
 }
 
-button.add {
+button.add-button {
   padding: 15px 20px;
   background-color: #e2e8f0;
   border-radius: 15px;
@@ -55,6 +55,12 @@ button.add {
   padding: 20px;
   color: white;
   border-radius: 20px;
+}
+
+button.remove-button {
+  align-self: end;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .form-element {
