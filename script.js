@@ -56,14 +56,25 @@ function displayAllBooks() {
     const bookRead = document.createElement('p');
     if (book.read) {
       bookRead.textContent = 'already read';
+      bookRead.style.color = 'green'
     } else {
       bookRead.textContent = 'not read yet';
+      bookRead.style.color = 'red'
     }
 
     // Добавление кнопок
 
     const buttons = document.createElement('div');
     buttons.classList.toggle('buttons');
+
+    const changeBtn = document.createElement('button');
+    changeBtn.classList.toggle('change-status-button');
+    changeBtn.textContent = 'Change status';
+
+    changeBtn.addEventListener('click', () => {
+      book.changeStatus();
+      displayAllBooks();
+    });
 
     const removeBtn = document.createElement('button');
     removeBtn.classList.toggle('remove-button');
@@ -74,22 +85,13 @@ function displayAllBooks() {
       displayAllBooks();
     });
     
-    const changeBtn = document.createElement('button');
-    changeBtn.classList.toggle('change-status-button');
-    changeBtn.textContent = 'Change status';
-
-    changeBtn.addEventListener('click', () => {
-      book.changeStatus();
-      displayAllBooks();
-    });
-    
     content.appendChild(bookTitle);
     content.appendChild(bookAuthor);
     content.appendChild(bookPages);
     content.appendChild(bookRead);
     content.appendChild(buttons);
-    buttons.appendChild(removeBtn);
     buttons.appendChild(changeBtn);
+    buttons.appendChild(removeBtn);
   }
 }
 
@@ -112,7 +114,8 @@ const pagesInput = document.querySelector('#pages');
 const readInput = document.querySelector('#read');
 const formBook = document.querySelector('form');
 
-btnForm.addEventListener('click', () => {
+btnForm.addEventListener('click', (e) => {
+  e.preventDefault();
   let readStatus;
   readInput.checked ? readStatus = true : readStatus = false;
   addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readStatus);

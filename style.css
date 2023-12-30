@@ -16,7 +16,7 @@ header {
   display: flex;
   align-items: center;
   padding: 0px 30px;
-  background-color: #020617;
+  background-color: #101527;
   color: white;
 }
 
@@ -41,7 +41,7 @@ button.add-button {
 }
 
 .new-book {
-  background-color: #334155;
+  background-color: #303030;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
