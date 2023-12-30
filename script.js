@@ -13,6 +13,7 @@ Book.prototype.changeStatus = function() {
   this.read = !this.read;
 }
 
+
 // Создание функции которая сохраняет новый объект книги в массив
 
 function addBookToLibrary(title, author, pages, read) {
@@ -24,13 +25,16 @@ function addBookToLibrary(title, author, pages, read) {
 // Создание функции отображения каждой книги на странице
 
 function displayAllBooks() {
-  // console.clear();
+
+  // Очищаем отображение 
+
   const container = document.querySelector('.library');
   while (container.firstChild) {
     container.removeChild(container.lastChild);
   };
 
-  // Проход по массиву для отображения
+  // Проход по массиву для отображения библиотеки
+
   for (const book of myLibrary) {
     console.log(book);
 
@@ -56,6 +60,11 @@ function displayAllBooks() {
       bookRead.textContent = 'not read yet';
     }
 
+    // Добавление кнопок
+
+    const buttons = document.createElement('div');
+    buttons.classList.toggle('buttons');
+
     const removeBtn = document.createElement('button');
     removeBtn.classList.toggle('remove-button');
     removeBtn.textContent = 'Remove book';
@@ -64,7 +73,6 @@ function displayAllBooks() {
       myLibrary.splice(content.dataset.index, 1);
       displayAllBooks();
     });
-    // console.log('Add remove button');
     
     const changeBtn = document.createElement('button');
     changeBtn.classList.toggle('change-status-button');
@@ -75,18 +83,18 @@ function displayAllBooks() {
       displayAllBooks();
     });
     
-
     content.appendChild(bookTitle);
     content.appendChild(bookAuthor);
     content.appendChild(bookPages);
     content.appendChild(bookRead);
-    content.appendChild(removeBtn);
-    content.appendChild(changeBtn);
+    content.appendChild(buttons);
+    buttons.appendChild(removeBtn);
+    buttons.appendChild(changeBtn);
   }
 }
 
 
-// Добавлени 3-х книг для теста
+// Добавление 3-х книг для тестирования
 
 addBookToLibrary('World as will and representation', 'Artur Schopenhauer', 576, true);
 addBookToLibrary('Parerga und Paralipomena', 'Artur Schopenhauer', 522, false);
@@ -95,7 +103,7 @@ addBookToLibrary('Walden', 'Henry Thoreau', 262, true);
 displayAllBooks();
 
 
-// Добавление книги из формы
+// Добавление новой книги из формы
 
 const btnForm = document.querySelector('.add-button');
 const titleInput = document.querySelector('#title');
@@ -103,7 +111,6 @@ const authorInput = document.querySelector('#author');
 const pagesInput = document.querySelector('#pages');
 const readInput = document.querySelector('#read');
 const formBook = document.querySelector('form');
-
 
 btnForm.addEventListener('click', () => {
   let readStatus;
