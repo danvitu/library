@@ -2,17 +2,18 @@
 
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
-Book.prototype.changeStatus = function() {
-  this.read = !this.read;
+  changeStatus() {
+    this.read = !this.read;
+  }
 }
-
 
 // Создание функции которая сохраняет новый объект книги в массив
 
