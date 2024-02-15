@@ -51,7 +51,8 @@ button.add-button {
   border-radius: 20px;
 }
 
-button.remove-button, button.change-status-button {
+button.remove-button,
+button.change-status-button {
   align-self: end;
   padding: 5px;
   border-radius: 10px;
@@ -86,4 +87,12 @@ form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+:invalid {
+  border-color: red;
+}
+
+:valid {
+  border-color: green;
 }
